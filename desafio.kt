@@ -4,9 +4,9 @@ enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
 class Usuario(val nome: String, var formacao: Formacao? = null)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+data class ConteudoEducacional(val nome: String, val duracao: Int = 60)
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+data class Formacao(val nome: String, val conteudos: List<ConteudoEducacional>) {
 
     val inscritos = mutableListOf<Usuario>()
 
@@ -32,8 +32,12 @@ fun main() {
     formacao1.matricular(usuario1)
     formacao2.matricular(usuario2)
     formacao3.matricular(usuario3)
-
-    println("${usuario1.nome}, Matriculado em: ${usuario1.formacao?.nome}")
-    println("${usuario2.nome}, Matriculado em: ${usuario2.formacao?.nome}")
-    println("${usuario3.nome}, Matriculado em: ${usuario3.formacao?.nome}")
+    
+    val nivel1 = Nivel.BASICO
+    val nivel2 = Nivel.DIFICIL 
+    val nivel3 = Nivel.INTERMEDIARIO
+  
+    println("${usuario1.nome}, Matriculado em: ${usuario1.formacao?.nome} - $nivel1")
+    println("${usuario2.nome}, Matriculado em: ${usuario2.formacao?.nome} - $nivel2")
+    println("${usuario3.nome}, Matriculado em: ${usuario3.formacao?.nome} - $nivel3")
 }
